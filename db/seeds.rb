@@ -5,6 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-10.times do |u|
-    User.create! name: "ducle#{u}" , email: "ducle#{u}@gmail.com" ,password:"123456" , password_confirmation:"123456"
-end
+
+    PlaylistsSong.create! playlist_id: 1 , song_id: 2
+    PlaylistsSong.create! playlist_id: 1 , song_id: 1
+    PlaylistsSong.create! playlist_id: 1 , song_id: 3
+    PlaylistsSong.create! playlist_id: 2 , song_id: 5
+    PlaylistsSong.create! playlist_id: 2 , song_id: 6
+    
+    
+
+

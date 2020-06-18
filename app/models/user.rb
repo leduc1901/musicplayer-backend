@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+    has_many :playlists
     has_secure_password #bat buoc can thiet de dang nhap 
     before_save {self.email = email.downcase}
     validates :password, presence: true , length: {minimum:5, maximum:50}
