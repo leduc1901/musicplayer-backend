@@ -112,6 +112,7 @@ GEM
       mimemagic (~> 0.3.2)
     method_source (1.0.0)
     mimemagic (0.3.5)
+    mini_magick (4.10.1)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.1)
@@ -237,6 +238,7 @@ DEPENDENCIES
   jquery-rails
   jwt
   listen (~> 3.2)
+  mini_magick
   pg (= 1.2.3)
   puma (~> 4.1)
   rack-cors

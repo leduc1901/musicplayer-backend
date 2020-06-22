@@ -1,7 +1,7 @@
 class PlaylistsController < ApplicationController
     before_action :authorize_request
     def index 
-        @playlists = Playlist.where(privacy: "public")
+        @playlists = Playlist.where(privacy: "public").includes(:user)
         render json: @playlists.map { |playlist| {id: playlist.id , name: playlist.name , user: playlist.user.name, user_id: playlist.user_id} }
     end
 
@@ -11,14 +11,14 @@ class PlaylistsController < ApplicationController
     end
 
     def show 
-        @playlist = Playlist.find( params[:id])    
-        render json:  {songs: @playlist.playlists_songs.map do |playlists_song|
+        @playlist = Playlist.find( params[:id])
+        render json:  {songs: @playlist.playlists_songs.includes(song: [:category, {song_url_attachment: :blob} , singer: {image_attachment: :blob} ]).map do |playlists_song|
             {
                 id: playlists_song.id ,
                 name: playlists_song.song.name,
                 singer: playlists_song.song.singer.name,
-                image: playlists_song.song.singer.image ,
-                url: playlists_song.song.url,
+                image: rails_blob_url(playlists_song.song.singer.image, only_path: true) ,
+                url: rails_blob_url(playlists_song.song.song_url, only_path: true),
                 category: playlists_song.song.category.name
             }
         end
