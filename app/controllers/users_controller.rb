@@ -8,8 +8,11 @@ class UsersController < ApplicationController
 
     def show 
         @user = User.find(params[:id])
-        render json: {name: @user.name , email: @user.email , avatar: rails_blob_url(@user.avatar, only_path: true)}, status: :ok 
-
+        if @user.avatar.attached?
+            render json: {name: @user.name , email: @user.email , avatar: rails_blob_url(@user.avatar, only_path: true)}, status: :ok 
+        else  
+            render json: {name: @user.name , email: @user.email , avatar: ""}, status: :ok 
+        end
     end
 
     def create 
