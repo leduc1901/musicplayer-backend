@@ -12,7 +12,7 @@ class PlaylistsController < ApplicationController
 
     def show 
         @playlist = Playlist.find( params[:id])
-        render json:  {songs: @playlist.playlists_songs.includes(song: [:category, {song_url_attachment: :blob} , singer: {image_attachment: :blob} ]).map do |playlists_song|
+        render json:  {user_id: @playlist.user_id ,songs: @playlist.playlists_songs.includes(song: [:category, {song_url_attachment: :blob} , singer: {image_attachment: :blob} ]).map do |playlists_song|
             {
                 id: playlists_song.id ,
                 name: playlists_song.song.name,
