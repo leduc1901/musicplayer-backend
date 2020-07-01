@@ -14,4 +14,25 @@ class SongsController < ApplicationController
 
     end
 
+    def create 
+        @song = Song.new(song_params)
+        
+        if @song.save
+        
+            @song.song_url.attach(params[:file])
+          
+        end
+    end 
+
+    def destroy 
+
+    end 
+
+    private 
+
+    def song_params
+        params.permit(:name , :category_id , :singer_id)
+    end
+
+
 end
