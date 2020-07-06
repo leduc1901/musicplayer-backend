@@ -7,7 +7,7 @@ class PlaylistsController < ApplicationController
 
     def show_from_user
         @playlists = Playlist.where(user_id: params[:id])
-        render json: @playlists.map { |playlist| {id: playlist.id , name: playlist.name , user: playlist.user.name , user_id: playlist.user_id} }
+        render json: @playlists.map { |playlist| {id: playlist.id, privacy: playlist.privacy , name: playlist.name , user: playlist.user.name , user_id: playlist.user_id} }
     end
 
     def show 
@@ -23,6 +23,15 @@ class PlaylistsController < ApplicationController
             }
         end
     }    
+    end
+
+    def update 
+        @playlist = Playlist.find(params[:id])
+        if @playlist.update_attribute(:privacy , params[:privacy])
+            render json: @playlist
+        else 
+            render json: @playlist
+        end
     end
 
     def destroy 
