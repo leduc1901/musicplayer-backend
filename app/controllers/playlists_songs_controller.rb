@@ -15,9 +15,17 @@ class PlaylistsSongsController < ApplicationController
         @song.destroy
     end
 
+    def sort 
+        params[:array].each do |item| 
+            @song = PlaylistsSong.find(item[:id])
+            @song.update_attribute(:song_index , item[:index])
+        end
+        render json: params
+    end
+
     private 
     
     def song_params 
-        params.require(:playlists_song).permit(:playlist_id , :song_id)
+        params.require(:playlists_song).permit(:playlist_id , :song_id , :song_index)
     end
 end

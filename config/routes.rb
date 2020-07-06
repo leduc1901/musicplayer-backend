@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   post "searchsinger/:search" => "singers#search"
   post "searchcategories/:search" => "categories#search"
   post "searchusers/:search" => "users#search"
+  post "sort" => "playlists_songs#sort"
   # get "/*a" , to: 'application#not_found'
 end
