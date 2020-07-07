@@ -16,11 +16,8 @@ class SongsController < ApplicationController
 
     def create 
         @song = Song.new(song_params)
-        
         if @song.save
-        
             @song.song_url.attach(params[:file])
-          
         end
     end 
 

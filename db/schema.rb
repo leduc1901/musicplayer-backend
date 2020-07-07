@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_22_082948) do
+ActiveRecord::Schema.define(version: 2020_07_06_080003) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2020_06_22_082948) do
     t.integer "song_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "song_index"
     t.index ["playlist_id"], name: "index_playlists_songs_on_playlist_id"
     t.index ["song_id"], name: "index_playlists_songs_on_song_id"
   end
