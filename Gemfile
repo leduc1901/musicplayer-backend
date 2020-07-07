@@ -14,6 +14,9 @@ gem "font-awesome-rails"
 gem 'jquery-rails'
 gem 'jwt'
 gem 'rack-cors'
+gem 'redis-rails'
+gem 'sidekiq'
+gem 'sidekiq-scheduler'
 # Use sqlite3 as the database for Active Recorad
 
 # Use Puma as the app server
