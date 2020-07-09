@@ -1,4 +1,8 @@
 :schedule:
   Analyst:           
-    cron: '* * 1 * *'     # Thời gian chạy => Chạy mỗi phút 1 lần 
+    cron: '* * 1 * *'     
+    queue: scheduler
+
+  DownloadSong:
+    cron: '* 0 * * *'
     queue: scheduler

@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   post "searchusers/:search" => "users#search"
   post "sort" => "playlists_songs#sort"
   post "send_mail" => "playlists#send_mail"
+  post "download" => "users#download"
+  post "charges" => "charges#create"
   # mount Sidekiq::Web => '/sidekiq'
   # get "/*a" , to: 'application#not_found'
 
