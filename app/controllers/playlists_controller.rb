@@ -26,14 +26,27 @@ class PlaylistsController < ApplicationController
     }    
     end
 
-  
+    def send_mail 
+        @playlist = Playlist.find( params[:id])
+        @user = User.find(@playlist.user_id)
+        @listener = User.find(params[:name])
+        UserMailer.send_email(@user , @listener).deliver_now
+        render json: {status: "success"}
+    end
 
+   
     def update 
         @playlist = Playlist.find(params[:id])
-        if @playlist.update_attribute(:privacy , params[:privacy])
-            render json: @playlist
-        else 
-            render json: @playlist
+        if params[:song_id] != nil
+            @playlist.playlists_songs_attributes = {id: params[:song_id] , _destroy: '1'}
+            if @playlist.save
+                render json: @playlist
+            end
+        end
+        if params[:privacy] != nil
+            if @playlist.update_attribute(:privacy , params[:privacy])
+                render json: @playlist
+            end
         end
     end
 
@@ -53,7 +66,7 @@ class PlaylistsController < ApplicationController
 
     private 
     def playlist_params
-        params.require(:playlist).permit(:name, :privacy , :user_id)
+        params.require(:playlist).permit(:name, :privacy , :user_id , :playlists_songs_attributes => [:song_id , :song_index])
     end
 
 end

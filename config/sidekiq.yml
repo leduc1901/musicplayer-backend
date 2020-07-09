@@ -1,0 +1,4 @@
+:schedule:
+  Analyst:           
+    cron: '* * 1 * *'     # Thời gian chạy => Chạy mỗi phút 1 lần 
+    queue: scheduler
