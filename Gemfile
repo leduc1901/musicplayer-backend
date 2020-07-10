@@ -17,6 +17,7 @@ gem 'rack-cors'
 gem 'redis-rails'
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
+gem 'stripe'
 # Use sqlite3 as the database for Active Recorad
 
 # Use Puma as the app server
