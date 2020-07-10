@@ -17,6 +17,7 @@ class PlaylistsController < ApplicationController
                 id: playlists_song.id ,
                 name: playlists_song.song.name,
                 singer: playlists_song.song.singer.name,
+                song_id: playlists_song.song.id,
                 image: rails_blob_url(playlists_song.song.singer.image, only_path: true) ,
                 url: rails_blob_url(playlists_song.song.song_url, only_path: true),
                 category: playlists_song.song.category.name,
