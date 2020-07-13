@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   post "download" => "users#download"
   post "charges" => "charges#create"
   post "getcomment" => "comments#get_comment"
+  post "reply" => "comments#reply"
+  post "getreply"  => "comments#getreply"
   # mount Sidekiq::Web => '/sidekiq'
   # get "/*a" , to: 'application#not_found'
 
