@@ -5,7 +5,8 @@ class Song < ApplicationRecord
 
     has_many :playlists_songs 
     has_many :playlists, through: :playlists_songs
-    
+    has_many :comments
+
     validates :name, presence:true , length:{minimum:5 , maximum:50}, uniqueness:true   
     validates :category_id, presence: true
     validates :singer_id, presence: true
