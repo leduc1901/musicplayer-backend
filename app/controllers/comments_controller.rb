@@ -31,8 +31,9 @@ class CommentsController < ApplicationController
   end
 
   def getreply
-    @comments = Comment.get_reply(params[:id]).includes(:song , user: {avatar_attachment: :blob}).order("created_at DESC")
-    render json: CommentBlueprint.render(@comments) 
+    @comments = Comment.find(params[:id])
+    
+    render json: CommentBlueprint.render(@comments.replies) 
 
   end
 
