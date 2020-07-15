@@ -62,6 +62,7 @@ GEM
       execjs
     bcrypt (3.1.13)
     bindex (0.8.1)
+    blueprinter (0.25.0)
     bootsnap (1.4.6)
       msgpack (~> 1.0)
     bootstrap-sass (3.4.1)
@@ -267,6 +268,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (= 3.1.13)
+  blueprinter
   bootsnap (>= 1.4.2)
   bootstrap-sass (~> 3)
   bootstrap-will_paginate (= 0.0.10)

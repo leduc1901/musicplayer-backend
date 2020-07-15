@@ -8,7 +8,13 @@ Rails.application.routes.draw do
   resources :playlists_songs 
   resources :categories 
   resources :singers
-  resources :comments
+  resources :comments do 
+    member do 
+      get "getreply"
+      get "get_comment"
+      post "reply"
+    end
+  end
   get "/playlists/user/:id" , to: 'playlists#show_from_user'
   post 'auth/login' , to: 'authentication#login'
   post "search/:search" => "songs#search" 
@@ -19,10 +25,5 @@ Rails.application.routes.draw do
   post "send_mail" => "playlists#send_mail"
   post "download" => "users#download"
   post "charges" => "charges#create"
-  post "getcomment" => "comments#get_comment"
-  post "reply" => "comments#reply"
-  post "getreply"  => "comments#getreply"
-  # mount Sidekiq::Web => '/sidekiq'
-  # get "/*a" , to: 'application#not_found'
 
 end
